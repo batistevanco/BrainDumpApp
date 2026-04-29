@@ -42,12 +42,25 @@
 		A00000000000000000000020 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000020 /* EmptyState.swift */; };
 		A00000000000000000000021 /* MascotIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000021 /* MascotIcon.swift */; };
 		A00000000000000000000022 /* BrainDumpMascot.png in Resources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000022 /* BrainDumpMascot.png */; };
+		T00000000000000000000001 /* BrainDumpStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000000000000000000001 /* BrainDumpStoreTests.swift */; };
+		T00000000000000000000002 /* BrainDumpBackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000000000000000000002 /* BrainDumpBackupTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		999999999999999999999991 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 666666666666666666666661 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 555555555555555555555551;
+			remoteInfo = BrainDump;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		222222222222222222222220 /* BrainDump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainDump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222222222222222222222221 /* BrainDumpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpApp.swift; sourceTree = "<group>"; };
 		222222222222222222222225 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		222222222222222222222226 /* BrainDumpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainDumpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00000000000000000000001 /* BrainDumpStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpStyle.swift; sourceTree = "<group>"; };
 		B00000000000000000000002 /* FlowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowItem.swift; sourceTree = "<group>"; };
 		B00000000000000000000003 /* BrainDumpBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpBackup.swift; sourceTree = "<group>"; };
@@ -82,10 +95,19 @@
 		B00000000000000000000020 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		B00000000000000000000021 /* MascotIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotIcon.swift; sourceTree = "<group>"; };
 		B00000000000000000000022 /* BrainDumpMascot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrainDumpMascot.png; sourceTree = "<group>"; };
+		D00000000000000000000001 /* BrainDumpStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpStoreTests.swift; sourceTree = "<group>"; };
+		D00000000000000000000002 /* BrainDumpBackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpBackupTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		333333333333333333333331 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		333333333333333333333334 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -99,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				444444444444444444444442 /* BrainDump */,
+				C0000000000000000000000B /* BrainDumpTests */,
 				444444444444444444444443 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,6 +138,15 @@
 				222222222222222222222225 /* Assets.xcassets */,
 			);
 			path = BrainDump;
+			sourceTree = "<group>";
+		};
+		444444444444444444444443 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				222222222222222222222220 /* BrainDump.app */,
+				222222222222222222222226 /* BrainDumpTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C00000000000000000000001 /* DesignSystem */ = {
@@ -226,12 +258,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		444444444444444444444443 /* Products */ = {
+		C0000000000000000000000B /* BrainDumpTests */ = {
 			isa = PBXGroup;
 			children = (
-				222222222222222222222220 /* BrainDump.app */,
+				D00000000000000000000001 /* BrainDumpStoreTests.swift */,
+				D00000000000000000000002 /* BrainDumpBackupTests.swift */,
 			);
-			name = Products;
+			path = BrainDumpTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +287,24 @@
 			productReference = 222222222222222222222220 /* BrainDump.app */;
 			productType = "com.apple.product-type.application";
 		};
+		555555555555555555555552 /* BrainDumpTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 777777777777777777777773 /* Build configuration list for PBXNativeTarget "BrainDumpTests" */;
+			buildPhases = (
+				333333333333333333333335 /* Sources */,
+				333333333333333333333334 /* Frameworks */,
+				333333333333333333333336 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				999999999999999999999992 /* PBXTargetDependency */,
+			);
+			name = BrainDumpTests;
+			productName = BrainDumpTests;
+			productReference = 222222222222222222222226 /* BrainDumpTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -266,6 +317,10 @@
 				TargetAttributes = {
 					555555555555555555555551 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					555555555555555555555552 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 555555555555555555555551;
 					};
 				};
 			};
@@ -283,6 +338,7 @@
 			projectRoot = "";
 			targets = (
 				555555555555555555555551 /* BrainDump */,
+				555555555555555555555552 /* BrainDumpTests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,6 +349,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A00000000000000000000022 /* BrainDumpMascot.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		333333333333333333333336 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +403,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		333333333333333333333335 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				T00000000000000000000001 /* BrainDumpStoreTests.swift in Sources */,
+				T00000000000000000000002 /* BrainDumpBackupTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		999999999999999999999992 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 555555555555555555555551 /* BrainDump */;
+			targetProxy = 999999999999999999999991 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		888888888888888888888881 /* Debug */ = {
@@ -468,6 +548,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BrainDump;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "BrainDump gebruikt de microfoon om gedachten te dicteren.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "BrainDump zet dictatie lokaal om naar tekst wanneer beschikbaar.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -481,6 +562,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -496,6 +578,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BrainDump;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "BrainDump gebruikt de microfoon om gedachten te dicteren.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "BrainDump zet dictatie lokaal om naar tekst wanneer beschikbaar.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -509,9 +592,52 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		888888888888888888888885 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = be.vancoillie.braindump.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainDump.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BrainDump";
+			};
+			name = Debug;
+		};
+		888888888888888888888886 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = be.vancoillie.braindump.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainDump.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BrainDump";
 			};
 			name = Release;
 		};
@@ -532,6 +658,15 @@
 			buildConfigurations = (
 				888888888888888888888881 /* Debug */,
 				888888888888888888888882 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		777777777777777777777773 /* Build configuration list for PBXNativeTarget "BrainDumpTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				888888888888888888888885 /* Debug */,
+				888888888888888888888886 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

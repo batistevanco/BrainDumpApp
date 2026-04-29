@@ -25,9 +25,14 @@ final class BrainDumpStore: ObservableObject {
         return decoder
     }()
 
-    private let fileName = "braindump-items.json"
+    private let storageURL: URL
+    private let shouldSeedSampleData: Bool
 
-    init() {
+    init(storageURL: URL? = nil, seedSampleData: Bool = true) {
+        self.storageURL = storageURL ?? FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("braindump-items.json")
+        self.shouldSeedSampleData = seedSampleData
         loadItems()
         seedIfNeeded()
     }
@@ -109,10 +114,6 @@ final class BrainDumpStore: ObservableObject {
         }
     }
 
-    private var storageURL: URL {
-        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(fileName)
-    }
-
     private func loadItems() {
         guard let data = try? Data(contentsOf: storageURL),
               let decoded = try? Self.decoder.decode([FlowItem].self, from: data) else {
@@ -127,6 +128,7 @@ final class BrainDumpStore: ObservableObject {
     }
 
     private func seedIfNeeded() {
+        guard shouldSeedSampleData else { return }
         guard items.isEmpty else { return }
         let calendar = Calendar.current
         let now = Date()

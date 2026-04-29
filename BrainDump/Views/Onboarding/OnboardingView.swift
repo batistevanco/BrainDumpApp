@@ -22,7 +22,7 @@ struct OnboardingView: View {
             ProgressDots(current: page, count: 4)
                 .padding(.bottom, 18)
 
-            PrimaryButton(title: page == 0 ? "Start" : page == 3 ? "BrainDump gebruiken" : "Volgende") {
+            PrimaryButton(title: page == 0 ? "Start" : page == 3 ? "Brainox gebruiken" : "Volgende") {
                 if page < 3 {
                     withAnimation(.spring(response: 0.25, dampingFraction: 0.9)) { page += 1 }
                 } else {

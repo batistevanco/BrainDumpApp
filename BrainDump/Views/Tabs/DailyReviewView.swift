@@ -51,9 +51,24 @@ struct DailyReviewView: View {
 
                     ForEach(nextItems) { item in
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("VOLGENDE · \(time(item.createdAt))")
-                                .font(.system(size: 16, weight: .medium))
-                                .foregroundStyle(FN.secondary)
+                            HStack {
+                                Text("VOLGENDE · \(time(item.createdAt))")
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundStyle(FN.secondary)
+                                Spacer()
+                                if let type = item.type {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: type.icon)
+                                        Text(type.label)
+                                    }
+                                    .font(.system(size: 12, weight: .medium))
+                                    .foregroundStyle(type.color)
+                                    .padding(.horizontal, 9)
+                                    .padding(.vertical, 4)
+                                    .background(type.color.opacity(0.1))
+                                    .clipShape(RoundedRectangle(cornerRadius: 7))
+                                }
+                            }
                             Text(item.text)
                                 .font(.system(size: 22))
                                 .foregroundStyle(FN.ink)

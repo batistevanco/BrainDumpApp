@@ -51,15 +51,28 @@ final class BrainDumpStore: ObservableObject {
         todayItems.filter { $0.status == .open }
     }
 
-    var weekCount: Int {
+    var weekItems: [FlowItem] {
         let weekAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
-        return items.filter { $0.createdAt >= weekAgo }.count
+        return items.filter { $0.createdAt >= weekAgo }
     }
 
-    func addItem(_ text: String) {
+    var weekCount: Int { weekItems.count }
+
+    var weekProcessedCount: Int {
+        weekItems.filter { $0.status == .completed || $0.status == .saved }.count
+    }
+
+    var weekDayCounts: [Int] {
+        (0..<7).reversed().map { offset in
+            let day = Calendar.current.date(byAdding: .day, value: -offset, to: Date()) ?? Date()
+            return weekItems.filter { Calendar.current.isDate($0.createdAt, inSameDayAs: day) }.count
+        }
+    }
+
+    func addItem(_ text: String, type: FlowItemType? = nil) {
         let clean = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !clean.isEmpty else { return }
-        items.insert(FlowItem(text: clean), at: 0)
+        items.insert(FlowItem(text: clean, type: type), at: 0)
     }
 
     func updateItem(_ item: FlowItem, text: String) {

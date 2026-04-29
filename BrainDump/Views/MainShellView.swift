@@ -15,5 +15,10 @@ struct MainShellView: View {
             }
             CustomTabBar(selected: $selected)
         }
+        .onOpenURL { url in
+            if url.scheme == "braindump", url.host == "capture" {
+                selected = .capture
+            }
+        }
     }
 }

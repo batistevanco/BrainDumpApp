@@ -23,6 +23,7 @@ struct SettingsView: View {
                         reviewCard
                         backupCard
                         onboardingCard
+                        supportCard
                     }
                     .padding(.horizontal, 22)
                     .padding(.top, 20)
@@ -92,10 +93,10 @@ struct SettingsView: View {
                 MascotIcon(size: 76)
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("BrainDump")
+                    Text("Brainox")
                         .font(.system(size: 28, weight: .semibold))
                         .foregroundStyle(FN.ink)
-                    Text("Je mentale inbox, lokaal op je iPhone.")
+                    Text("Hoofd leeg. Dag helder.")
                         .font(.system(size: 17, weight: .medium))
                         .foregroundStyle(FN.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -157,7 +158,7 @@ struct SettingsView: View {
                     store.scheduleReviewNotification { success in
                         notificationAlertTitle = success ? "Reminder gepland" : "Notificatie niet toegestaan"
                         notificationAlertMessage = success
-                            ? "BrainDump herinnert je elke dag om \(reviewTimeText) aan je Daily Review."
+                            ? "Brainox herinnert je elke dag om \(reviewTimeText) aan je Daily Review."
                             : "Sta notificaties toe in iOS-instellingen om Daily Review reminders te ontvangen."
                         showingNotificationAlert = true
                     }
@@ -216,6 +217,56 @@ struct SettingsView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 28))
             }
             .buttonStyle(.plain)
+        }
+    }
+
+    private var supportCard: some View {
+        SettingsGroup(title: "Support") {
+            VStack(spacing: 0) {
+                Link(destination: URL(string: "mailto:support@vancoilliestudio.be")!) {
+                    HStack(spacing: 14) {
+                        SettingsIcon(name: "envelope.fill")
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("Probleem melden")
+                                .font(.system(size: 18, weight: .semibold))
+                                .foregroundStyle(FN.ink)
+                            Text("support@vancoilliestudio.be")
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundStyle(FN.secondary)
+                        }
+                        Spacer()
+                        Image(systemName: "arrow.up.right")
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundStyle(FN.tertiary)
+                    }
+                    .padding(18)
+                }
+
+                Divider()
+                    .padding(.leading, 70)
+
+                Link(destination: URL(string: "https://www.vancoillieithulp.be/privacyPolicyBrainox.html")!) {
+                    HStack(spacing: 14) {
+                        SettingsIcon(name: "hand.raised.fill")
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("Privacybeleid")
+                                .font(.system(size: 18, weight: .semibold))
+                                .foregroundStyle(FN.ink)
+                            Text("Bekijk hoe Brainox omgaat met je gegevens")
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundStyle(FN.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        Spacer()
+                        Image(systemName: "arrow.up.right")
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundStyle(FN.tertiary)
+                    }
+                    .padding(18)
+                }
+            }
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 28))
         }
     }
 

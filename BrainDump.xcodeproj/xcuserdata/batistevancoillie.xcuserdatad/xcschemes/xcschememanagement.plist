@@ -7,7 +7,25 @@
 		<key>BrainDump.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>BrainDumpWidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>555555555555555555555551</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5959C21A2FA2195D0068B3FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

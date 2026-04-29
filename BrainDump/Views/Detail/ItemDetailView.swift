@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct ItemDetailView: View {
     @EnvironmentObject private var store: BrainDumpStore
@@ -27,16 +28,19 @@ struct ItemDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 HStack(spacing: 10) {
                     ReviewActionButton(title: "Klaar", icon: "checkmark.circle.fill", accentColor: FlowItemStatus.completed.color) {
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                         store.updateItem(item, text: editedText)
                         store.setStatus(item, status: .completed)
                         dismiss()
                     }
                     ReviewActionButton(title: "Bewaar", icon: "bookmark.fill", accentColor: FlowItemStatus.saved.color) {
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         store.updateItem(item, text: editedText)
                         store.setStatus(item, status: .saved)
                         dismiss()
                     }
                     ReviewActionButton(title: "Weg", destructive: true) {
+                        UINotificationFeedbackGenerator().notificationOccurred(.warning)
                         store.delete(item)
                         dismiss()
                     }

@@ -5,6 +5,18 @@ struct ItemCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
+            if let type = item.type {
+                HStack(spacing: 5) {
+                    Image(systemName: type.icon)
+                    Text(type.label)
+                }
+                .font(.system(size: 13, weight: .medium))
+                .foregroundStyle(type.color)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 5)
+                .background(type.color.opacity(0.1))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
             Text(item.text)
                 .font(.system(size: 23))
                 .foregroundStyle(FN.ink)

@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		111111111111111111111111 /* BrainDumpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222222222222222222222221 /* BrainDumpApp.swift */; };
+		5959C21E2FA2195D0068B3FD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5959C21D2FA2195D0068B3FD /* WidgetKit.framework */; };
+		5959C2202FA2195D0068B3FD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5959C21F2FA2195D0068B3FD /* SwiftUI.framework */; };
+		5959C22F2FA2195E0068B3FD /* BrainDumpWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5959C21B2FA2195D0068B3FD /* BrainDumpWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A00000000000000000000001 /* BrainDumpStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000001 /* BrainDumpStyle.swift */; };
 		A00000000000000000000002 /* FlowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000002 /* FlowItem.swift */; };
 		A00000000000000000000003 /* BrainDumpBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000003 /* BrainDumpBackup.swift */; };
@@ -42,11 +45,19 @@
 		A00000000000000000000020 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000020 /* EmptyState.swift */; };
 		A00000000000000000000021 /* MascotIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000021 /* MascotIcon.swift */; };
 		A00000000000000000000022 /* BrainDumpMascot.png in Resources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000022 /* BrainDumpMascot.png */; };
+		A00000000000000000000023 /* WeeklyStatsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000023 /* WeeklyStatsCard.swift */; };
 		T00000000000000000000001 /* BrainDumpStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000000000000000000001 /* BrainDumpStoreTests.swift */; };
 		T00000000000000000000002 /* BrainDumpBackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000000000000000000002 /* BrainDumpBackupTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5959C22D2FA2195E0068B3FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 666666666666666666666661 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5959C21A2FA2195D0068B3FD;
+			remoteInfo = BrainDumpWidgetExtension;
+		};
 		999999999999999999999991 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 666666666666666666666661 /* Project object */;
@@ -56,11 +67,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5959C2342FA2195E0068B3FD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5959C22F2FA2195E0068B3FD /* BrainDumpWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		222222222222222222222220 /* BrainDump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainDump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222222222222222222222221 /* BrainDumpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpApp.swift; sourceTree = "<group>"; };
 		222222222222222222222225 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		222222222222222222222226 /* BrainDumpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainDumpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5959C21B2FA2195D0068B3FD /* BrainDumpWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BrainDumpWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5959C21D2FA2195D0068B3FD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5959C21F2FA2195D0068B3FD /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		5959C24D2FA21A3C0068B3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B00000000000000000000001 /* BrainDumpStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpStyle.swift; sourceTree = "<group>"; };
 		B00000000000000000000002 /* FlowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowItem.swift; sourceTree = "<group>"; };
 		B00000000000000000000003 /* BrainDumpBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpBackup.swift; sourceTree = "<group>"; };
@@ -95,9 +124,24 @@
 		B00000000000000000000020 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		B00000000000000000000021 /* MascotIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotIcon.swift; sourceTree = "<group>"; };
 		B00000000000000000000022 /* BrainDumpMascot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrainDumpMascot.png; sourceTree = "<group>"; };
+		B00000000000000000000023 /* WeeklyStatsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStatsCard.swift; sourceTree = "<group>"; };
 		D00000000000000000000001 /* BrainDumpStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpStoreTests.swift; sourceTree = "<group>"; };
 		D00000000000000000000002 /* BrainDumpBackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainDumpBackupTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5959C2302FA2195E0068B3FD /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5959C21A2FA2195D0068B3FD /* BrainDumpWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5959C2212FA2195D0068B3FD /* BrainDumpWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5959C2302FA2195E0068B3FD /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BrainDumpWidget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		333333333333333333333331 /* Frameworks */ = {
@@ -114,6 +158,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5959C2182FA2195D0068B3FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5959C2202FA2195D0068B3FD /* SwiftUI.framework in Frameworks */,
+				5959C21E2FA2195D0068B3FD /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -122,6 +175,8 @@
 			children = (
 				444444444444444444444442 /* BrainDump */,
 				C0000000000000000000000B /* BrainDumpTests */,
+				5959C2212FA2195D0068B3FD /* BrainDumpWidget */,
+				5959C21C2FA2195D0068B3FD /* Frameworks */,
 				444444444444444444444443 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,6 +184,7 @@
 		444444444444444444444442 /* BrainDump */ = {
 			isa = PBXGroup;
 			children = (
+				5959C24D2FA21A3C0068B3FD /* Info.plist */,
 				222222222222222222222221 /* BrainDumpApp.swift */,
 				C00000000000000000000001 /* DesignSystem */,
 				C00000000000000000000002 /* Models */,
@@ -145,8 +201,18 @@
 			children = (
 				222222222222222222222220 /* BrainDump.app */,
 				222222222222222222222226 /* BrainDumpTests.xctest */,
+				5959C21B2FA2195D0068B3FD /* BrainDumpWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5959C21C2FA2195D0068B3FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5959C21D2FA2195D0068B3FD /* WidgetKit.framework */,
+				5959C21F2FA2195D0068B3FD /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C00000000000000000000001 /* DesignSystem */ = {
@@ -246,6 +312,7 @@
 				B0000000000000000000001F /* SectionLabel.swift */,
 				B00000000000000000000020 /* EmptyState.swift */,
 				B00000000000000000000021 /* MascotIcon.swift */,
+				B00000000000000000000023 /* WeeklyStatsCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -277,10 +344,12 @@
 				333333333333333333333332 /* Sources */,
 				333333333333333333333331 /* Frameworks */,
 				333333333333333333333333 /* Resources */,
+				5959C2342FA2195E0068B3FD /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5959C22E2FA2195E0068B3FD /* PBXTargetDependency */,
 			);
 			name = BrainDump;
 			productName = BrainDump;
@@ -305,6 +374,28 @@
 			productReference = 222222222222222222222226 /* BrainDumpTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		5959C21A2FA2195D0068B3FD /* BrainDumpWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5959C2312FA2195E0068B3FD /* Build configuration list for PBXNativeTarget "BrainDumpWidgetExtension" */;
+			buildPhases = (
+				5959C2172FA2195D0068B3FD /* Sources */,
+				5959C2182FA2195D0068B3FD /* Frameworks */,
+				5959C2192FA2195D0068B3FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5959C2212FA2195D0068B3FD /* BrainDumpWidget */,
+			);
+			name = BrainDumpWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = BrainDumpWidgetExtension;
+			productReference = 5959C21B2FA2195D0068B3FD /* BrainDumpWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -312,7 +403,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					555555555555555555555551 = {
@@ -321,6 +412,9 @@
 					555555555555555555555552 = {
 						CreatedOnToolsVersion = 15.3;
 						TestTargetID = 555555555555555555555551;
+					};
+					5959C21A2FA2195D0068B3FD = {
+						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
@@ -339,6 +433,7 @@
 			targets = (
 				555555555555555555555551 /* BrainDump */,
 				555555555555555555555552 /* BrainDumpTests */,
+				5959C21A2FA2195D0068B3FD /* BrainDumpWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -353,6 +448,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		333333333333333333333336 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5959C2192FA2195D0068B3FD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -400,6 +502,7 @@
 				A0000000000000000000001F /* SectionLabel.swift in Sources */,
 				A00000000000000000000020 /* EmptyState.swift in Sources */,
 				A00000000000000000000021 /* MascotIcon.swift in Sources */,
+				A00000000000000000000023 /* WeeklyStatsCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,9 +515,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5959C2172FA2195D0068B3FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5959C22E2FA2195E0068B3FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5959C21A2FA2195D0068B3FD /* BrainDumpWidgetExtension */;
+			targetProxy = 5959C22D2FA2195E0068B3FD /* PBXContainerItemProxy */;
+		};
 		999999999999999999999992 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 555555555555555555555551 /* BrainDump */;
@@ -423,6 +538,73 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5959C2322FA2195E0068B3FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K2F5H4NJCX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BrainDumpWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BrainDumpWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = be.vancoillie.braindump.BrainDumpWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5959C2332FA2195E0068B3FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K2F5H4NJCX;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BrainDumpWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BrainDumpWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = be.vancoillie.braindump.BrainDumpWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		888888888888888888888881 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -547,7 +729,8 @@
 				DEVELOPMENT_TEAM = K2F5H4NJCX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = BrainDump;
+				INFOPLIST_FILE = BrainDump/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Brainox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "BrainDump gebruikt de microfoon om gedachten te dicteren.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "BrainDump zet dictatie lokaal om naar tekst wanneer beschikbaar.";
@@ -577,7 +760,8 @@
 				DEVELOPMENT_TEAM = K2F5H4NJCX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = BrainDump;
+				INFOPLIST_FILE = BrainDump/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Brainox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "BrainDump gebruikt de microfoon om gedachten te dicteren.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "BrainDump zet dictatie lokaal om naar tekst wanneer beschikbaar.";
@@ -644,6 +828,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5959C2312FA2195E0068B3FD /* Build configuration list for PBXNativeTarget "BrainDumpWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5959C2322FA2195E0068B3FD /* Debug */,
+				5959C2332FA2195E0068B3FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		777777777777777777777771 /* Build configuration list for PBXNativeTarget "BrainDump" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

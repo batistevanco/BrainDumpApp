@@ -5,6 +5,7 @@ struct CaptureView: View {
     @EnvironmentObject private var store: BrainDumpStore
     @StateObject private var speech = SpeechController()
     @State private var text = ""
+    @State private var selectedType: FlowItemType? = nil
     @State private var savedPulse = false
     @FocusState private var isFocused: Bool
 
@@ -50,11 +51,39 @@ struct CaptureView: View {
                     }
                 }
 
+                HStack(spacing: 8) {
+                    ForEach(FlowItemType.allCases) { type in
+                        Button {
+                            withAnimation(.spring(response: 0.25, dampingFraction: 0.7)) {
+                                selectedType = selectedType == type ? nil : type
+                            }
+                        } label: {
+                            HStack(spacing: 6) {
+                                Image(systemName: type.icon)
+                                Text(type.label)
+                            }
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundStyle(selectedType == type ? type.color : FN.secondary)
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 10)
+                            .background(selectedType == type ? type.color.opacity(0.12) : FN.surface)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(selectedType == type ? type.color.opacity(0.4) : Color.clear, lineWidth: 1.5)
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    Spacer()
+                }
+
                 PrimaryButton(title: savedPulse ? "Opgeslagen" : "Opslaan", disabled: text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
-                    store.addItem(text)
+                    store.addItem(text, type: selectedType)
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     withAnimation(.easeInOut(duration: 0.2)) {
                         text = ""
+                        selectedType = nil
                         savedPulse = true
                     }
                     Task {

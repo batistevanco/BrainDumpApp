@@ -32,6 +32,6 @@ struct MascotIcon: View {
         }
         .frame(width: size, height: size)
         .clipShape(RoundedRectangle(cornerRadius: size * 0.28))
-        .accessibilityLabel("BrainDump mascotte")
+        .accessibilityLabel("Brainox mascotte")
     }
 }

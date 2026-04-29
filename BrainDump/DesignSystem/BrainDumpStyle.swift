@@ -10,5 +10,5 @@ enum FN {
 }
 
 func time(_ date: Date) -> String {
-    date.formatted(.dateTime.hour(.twoDigits(amPM: .omitted)).minute().locale(Locale(identifier: "nl_BE")))
+    date.formatted(.dateTime.hour(.twoDigits(amPM: .omitted)).minute(.twoDigits).locale(Locale(identifier: "nl_BE")))
 }

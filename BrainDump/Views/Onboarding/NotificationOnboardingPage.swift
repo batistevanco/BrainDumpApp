@@ -20,7 +20,7 @@ struct NotificationOnboardingPage: View {
                 .lineSpacing(3)
                 .foregroundStyle(FN.ink)
                 .padding(.bottom, 22)
-            Text("Kies een vast moment waarop\nBrainDump je eraan herinnert.")
+            Text("Kies een vast moment waarop\nBrainox je eraan herinnert.")
                 .font(.system(size: 23))
                 .foregroundStyle(FN.secondary)
                 .multilineTextAlignment(.center)

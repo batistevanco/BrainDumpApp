@@ -56,7 +56,9 @@ struct WelcomeOnboardingPage: View {
             .frame(height: 270)
 
             Spacer()
-            Text("Welkom bij\nBrainDump")
+            MascotIcon(size: 88)
+                .padding(.bottom, 24)
+            Text("Welkom bij\nBrainox")
                 .font(.system(size: 36, weight: .medium))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(FN.ink)

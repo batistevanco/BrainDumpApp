@@ -11,9 +11,17 @@ struct ItemCard: View {
                 .strikethrough(item.status == .completed)
                 .lineLimit(3)
                 .multilineTextAlignment(.leading)
-            Text("\(time(item.createdAt)) · \(item.status.label)")
-                .font(.system(size: 17))
-                .foregroundStyle(FN.secondary)
+            HStack(spacing: 6) {
+                Text(time(item.createdAt))
+                    .foregroundStyle(FN.secondary)
+                Text("·")
+                    .foregroundStyle(FN.tertiary)
+                Image(systemName: item.status.icon)
+                    .foregroundStyle(item.status.color)
+                Text(item.status.label)
+                    .foregroundStyle(item.status.color)
+            }
+            .font(.system(size: 17))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 20)

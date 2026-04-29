@@ -40,6 +40,11 @@ struct DailyReviewView: View {
                 VStack(spacing: 14) {
                     if let active = activeItem {
                         ActiveReviewCard(item: active)
+                            .id(active.id)
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
                     } else {
                         EmptyState(title: "Vandaag is verwerkt", text: "Je mentale inbox is leeg voor vandaag.")
                     }
@@ -60,9 +65,10 @@ struct DailyReviewView: View {
                         .opacity(0.85)
                     }
 
-                    ForEach(completedToday) { item in
+                    ForEach(processedToday) { item in
                         HStack(spacing: 12) {
-                            Image(systemName: "checkmark.circle.fill").foregroundStyle(FN.ink.opacity(0.5))
+                            Image(systemName: item.status.icon)
+                                .foregroundStyle(item.status.color.opacity(0.6))
                             Text(item.text)
                                 .font(.system(size: 20))
                                 .strikethrough()
@@ -73,6 +79,7 @@ struct DailyReviewView: View {
                         .background(FN.surface)
                         .clipShape(RoundedRectangle(cornerRadius: 18))
                         .opacity(0.55)
+                        .transition(.opacity.combined(with: .scale(scale: 0.97)))
                     }
                 }
                 .padding(.horizontal, 20)
@@ -85,8 +92,8 @@ struct DailyReviewView: View {
     private var openToday: [FlowItem] { store.reviewQueue }
     private var activeItem: FlowItem? { openToday.first }
     private var nextItems: [FlowItem] { Array(openToday.dropFirst().prefix(2)) }
-    private var completedToday: [FlowItem] { store.todayItems.filter { $0.status == .completed } }
+    private var processedToday: [FlowItem] { store.todayItems.filter { $0.status == .completed || $0.status == .saved } }
     private var total: Int { max(store.todayItems.count, 0) }
-    private var processed: Int { store.todayItems.filter { $0.status == .completed || $0.reviewedAt != nil }.count }
+    private var processed: Int { store.todayItems.filter { $0.status == .completed || $0.status == .saved }.count }
     private var progress: Double { total == 0 ? 1 : Double(processed) / Double(total) }
 }

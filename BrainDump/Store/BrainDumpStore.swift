@@ -48,7 +48,7 @@ final class BrainDumpStore: ObservableObject {
     }
 
     var reviewQueue: [FlowItem] {
-        todayItems.filter { $0.status == .open || $0.status == .saved }
+        todayItems.filter { $0.status == .open }
     }
 
     var weekCount: Int {

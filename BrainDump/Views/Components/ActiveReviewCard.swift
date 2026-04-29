@@ -14,14 +14,14 @@ struct ActiveReviewCard: View {
                 .foregroundStyle(FN.ink)
                 .lineSpacing(4)
             HStack(spacing: 8) {
-                ReviewActionButton(title: "✓ Klaar", primary: true) {
-                    withAnimation(.easeInOut(duration: 0.25)) { store.setStatus(item, status: .completed) }
+                ReviewActionButton(title: "Klaar", icon: "checkmark.circle.fill", accentColor: FlowItemStatus.completed.color) {
+                    withAnimation(.spring(response: 0.38, dampingFraction: 0.82)) { store.setStatus(item, status: .completed) }
                 }
-                ReviewActionButton(title: "Bewaar") {
-                    withAnimation(.easeInOut(duration: 0.25)) { store.setStatus(item, status: .saved) }
+                ReviewActionButton(title: "Bewaar", icon: "bookmark.fill", accentColor: FlowItemStatus.saved.color) {
+                    withAnimation(.spring(response: 0.38, dampingFraction: 0.82)) { store.setStatus(item, status: .saved) }
                 }
                 ReviewActionButton(title: "Weg", destructive: true) {
-                    withAnimation(.easeInOut(duration: 0.25)) { store.delete(item) }
+                    withAnimation(.spring(response: 0.38, dampingFraction: 0.82)) { store.delete(item) }
                 }
             }
         }

@@ -6,10 +6,10 @@ struct ActiveReviewCard: View {
     let item: FlowItem
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("VANDAAG · \(time(item.createdAt))")
-                    .font(.system(size: 17, weight: .medium))
+                    .appFont(size: 15, weight: .medium)
                     .foregroundStyle(FN.ink)
                 Spacer()
                 if let type = item.type {
@@ -17,16 +17,16 @@ struct ActiveReviewCard: View {
                         Image(systemName: type.icon)
                         Text(type.label)
                     }
-                    .font(.system(size: 13, weight: .medium))
+                    .appFont(size: 12, weight: .medium)
                     .foregroundStyle(type.color)
                     .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
+                    .padding(.vertical, 4)
                     .background(type.color.opacity(0.1))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             }
             Text(item.text)
-                .font(.system(size: 24))
+                .appFont(size: 21)
                 .foregroundStyle(FN.ink)
                 .lineSpacing(4)
             HStack(spacing: 8) {
@@ -45,9 +45,9 @@ struct ActiveReviewCard: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(24)
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 22))
-        .overlay(RoundedRectangle(cornerRadius: 22).stroke(FN.ink, lineWidth: 2))
+        .padding(20)
+        .background(FN.card)
+        .clipShape(RoundedRectangle(cornerRadius: 19))
+        .overlay(RoundedRectangle(cornerRadius: 19).stroke(FN.ink, lineWidth: 2))
     }
 }

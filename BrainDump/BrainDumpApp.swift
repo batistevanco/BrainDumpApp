@@ -8,7 +8,7 @@ struct BrainDumpApp: App {
         WindowGroup {
             RootView()
                 .environmentObject(store)
-                .preferredColorScheme(.light)
+                .preferredColorScheme(store.selectedColorScheme)
         }
     }
 }

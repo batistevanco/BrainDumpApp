@@ -32,7 +32,7 @@ struct TimeOption: View {
             .foregroundStyle(FN.ink)
             .padding(.horizontal, 24)
             .frame(height: 72)
-            .background(selected ? Color.white : FN.surface)
+            .background(selected ? FN.card : FN.surface)
             .clipShape(RoundedRectangle(cornerRadius: 18))
             .overlay(RoundedRectangle(cornerRadius: 18).stroke(selected ? FN.ink : Color.clear, lineWidth: 2))
         }

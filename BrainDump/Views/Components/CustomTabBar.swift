@@ -9,9 +9,9 @@ struct CustomTabBar: View {
                 Button { selected = tab } label: {
                     VStack(spacing: 4) {
                         Image(systemName: tab.icon)
-                            .font(.system(size: 25, weight: .regular))
+                            .font(.system(size: 22, weight: .regular))
                         Text(tab.rawValue)
-                            .font(.system(size: 14, weight: selected == tab ? .medium : .regular))
+                            .font(.system(size: 12, weight: selected == tab ? .medium : .regular))
                     }
                     .foregroundStyle(selected == tab ? FN.ink : FN.tertiary)
                     .frame(maxWidth: .infinity)
@@ -19,9 +19,9 @@ struct CustomTabBar: View {
                 .buttonStyle(.plain)
             }
         }
-        .padding(.top, 10)
-        .padding(.bottom, 12)
-        .background(Color.white)
+        .padding(.top, 8)
+        .padding(.bottom, 10)
+        .background(FN.card)
         .overlay(Rectangle().fill(FN.line).frame(height: 0.5), alignment: .top)
     }
 }

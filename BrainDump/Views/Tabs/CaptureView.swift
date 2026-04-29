@@ -10,113 +10,122 @@ struct CaptureView: View {
     @FocusState private var isFocused: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HeaderDateTitle(date: Date(), title: "Wat zit er in je hoofd?", trailing: {
-                HStack(spacing: 4) {
-                    MascotIcon(size: 44)
-                    SettingsButton()
-                }
-            })
+        VStack(alignment: .leading, spacing: 16) {
+            Text(Date().formatted(.dateTime.weekday(.wide).day().month(.wide).locale(Locale(identifier: "nl_BE"))).capitalized)
+                .appFont(size: 17, weight: .medium)
+                .foregroundStyle(FN.secondary)
+                .padding(.horizontal, 4)
 
-            VStack(spacing: 16) {
-                ZStack(alignment: .topLeading) {
-                    TextEditor(text: $text)
-                        .focused($isFocused)
-                        .font(.system(size: 24))
-                        .foregroundStyle(FN.ink)
-                        .scrollContentBackground(.hidden)
-                        .padding(.horizontal, 18)
-                        .padding(.vertical, 20)
-                        .frame(minHeight: 330)
-                        .background(FN.surface)
-                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                    if text.isEmpty {
-                        Text("Vrijdag de presentatie voor\nde klant nog afwerken")
-                            .font(.system(size: 24))
-                            .foregroundStyle(FN.ink.opacity(0.25))
-                            .lineSpacing(8)
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 28)
-                    }
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Text("\(text.count) tekens")
-                                .font(.system(size: 20))
-                                .foregroundStyle(FN.secondary)
-                            Spacer()
-                        }
+            ZStack(alignment: .topLeading) {
+                TextEditor(text: $text)
+                    .focused($isFocused)
+                    .appFont(size: 22)
+                    .foregroundStyle(FN.ink)
+                    .scrollContentBackground(.hidden)
+                    .padding(.horizontal, 18)
+                    .padding(.vertical, 18)
+                    .frame(maxHeight: .infinity)
+                    .background(FN.surface)
+                    .clipShape(RoundedRectangle(cornerRadius: 21))
+                if text.isEmpty {
+                    Text("Vrijdag de presentatie voor\nde klant nog afwerken")
+                        .appFont(size: 22)
+                        .foregroundStyle(FN.ink.opacity(0.25))
+                        .lineSpacing(8)
                         .padding(.horizontal, 24)
-                        .padding(.bottom, 22)
-                    }
+                        .padding(.vertical, 26)
+                        .allowsHitTesting(false)
                 }
-
-                HStack(spacing: 8) {
-                    ForEach(FlowItemType.allCases) { type in
-                        Button {
-                            withAnimation(.spring(response: 0.25, dampingFraction: 0.7)) {
-                                selectedType = selectedType == type ? nil : type
-                            }
-                        } label: {
-                            HStack(spacing: 6) {
-                                Image(systemName: type.icon)
-                                Text(type.label)
-                            }
-                            .font(.system(size: 16, weight: .medium))
-                            .foregroundStyle(selectedType == type ? type.color : FN.secondary)
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 10)
-                            .background(selectedType == type ? type.color.opacity(0.12) : FN.surface)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(selectedType == type ? type.color.opacity(0.4) : Color.clear, lineWidth: 1.5)
-                            )
-                        }
-                        .buttonStyle(.plain)
-                    }
+                VStack {
                     Spacer()
-                }
-
-                PrimaryButton(title: savedPulse ? "Opgeslagen" : "Opslaan", disabled: text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
-                    store.addItem(text, type: selectedType)
-                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        text = ""
-                        selectedType = nil
-                        savedPulse = true
+                    HStack {
+                        Text("\(text.count) tekens")
+                            .appFont(size: 17)
+                            .foregroundStyle(FN.secondary)
+                        Spacer()
                     }
-                    Task {
-                        try? await Task.sleep(for: .seconds(1.1))
-                        await MainActor.run { savedPulse = false }
-                    }
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 22)
                 }
+            }
+            .frame(maxHeight: .infinity)
 
-                if store.isDictationEnabled {
+            HStack(spacing: 8) {
+                ForEach(FlowItemType.allCases) { type in
                     Button {
-                        speech.toggleRecording()
-                    } label: {
-                        HStack(spacing: 14) {
-                            Image(systemName: speech.isRecording ? "stop.fill" : "mic.fill")
-                                .font(.system(size: 24))
-                                .foregroundStyle(FN.ink)
-                                .frame(width: 56, height: 56)
-                                .background(FN.surface)
-                                .clipShape(Circle())
-                            Text(speech.isRecording ? "Luisteren..." : "Of dicteer je gedachte")
-                                .font(.system(size: 20))
-                                .foregroundStyle(FN.secondary)
+                        isFocused = false
+                        withAnimation(.spring(response: 0.25, dampingFraction: 0.7)) {
+                            selectedType = selectedType == type ? nil : type
                         }
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: type.icon)
+                            Text(type.label)
+                        }
+                        .appFont(size: 14, weight: .medium)
+                        .foregroundStyle(selectedType == type ? type.color : FN.secondary)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(selectedType == type ? type.color.opacity(0.12) : FN.surface)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(selectedType == type ? type.color.opacity(0.4) : Color.clear, lineWidth: 1.5)
+                        )
                     }
                     .buttonStyle(.plain)
                 }
+                Spacer()
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 22)
 
-            Spacer()
+            PrimaryButton(title: savedPulse ? "Opgeslagen" : "Opslaan", disabled: text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
+                isFocused = false
+                if store.stopDictationAfterSave {
+                    speech.stop()
+                }
+                store.addItem(text, type: selectedType)
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    text = ""
+                    selectedType = nil
+                    savedPulse = true
+                }
+                Task {
+                    try? await Task.sleep(for: .seconds(1.1))
+                    await MainActor.run { savedPulse = false }
+                }
+            }
+
+            if store.isDictationEnabled {
+                Button {
+                    isFocused = false
+                    speech.toggleRecording()
+                } label: {
+                    HStack(spacing: 14) {
+                        Spacer()
+                        Image(systemName: speech.isRecording ? "stop.fill" : "mic.fill")
+                            .appFont(size: 22)
+                            .foregroundStyle(FN.ink)
+                            .frame(width: 50, height: 50)
+                            .background(FN.surface)
+                            .clipShape(Circle())
+                        Text(speech.isRecording ? "Luisteren..." : "Of dicteer je gedachte")
+                            .appFont(size: 18)
+                            .foregroundStyle(FN.secondary)
+                        Spacer()
+                    }
+                }
+                .buttonStyle(.plain)
+            }
         }
-        .onAppear { isFocused = true }
+        .padding(.horizontal, 20)
+        .padding(.top, 8)
+        .padding(.bottom, 20)
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 12)
+                .onChanged { _ in isFocused = false }
+        )
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .onChange(of: speech.transcript) { _, newValue in
             guard !newValue.isEmpty else { return }
             text = newValue

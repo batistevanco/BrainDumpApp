@@ -13,23 +13,23 @@ struct WeeklyStatsCard: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("\(store.weekCount)")
-                        .font(.system(size: 36, weight: .semibold))
+                        .appFont(size: 31, weight: .semibold)
                         .foregroundStyle(FN.ink)
                     Text("gedumpt")
-                        .font(.system(size: 15))
+                        .appFont(size: 13)
                         .foregroundStyle(FN.secondary)
                 }
                 Spacer()
                 VStack(alignment: .trailing, spacing: 2) {
                     Text("\(store.weekProcessedCount)")
-                        .font(.system(size: 36, weight: .semibold))
+                        .appFont(size: 31, weight: .semibold)
                         .foregroundStyle(FN.ink)
                     Text("verwerkt")
-                        .font(.system(size: 15))
+                        .appFont(size: 13)
                         .foregroundStyle(FN.secondary)
                 }
             }
@@ -46,17 +46,17 @@ struct WeeklyStatsCard: View {
 
             HStack(alignment: .bottom, spacing: 6) {
                 ForEach(Array(store.weekDayCounts.enumerated()), id: \.offset) { _, count in
-                    let height = count == 0 ? 4.0 : max(8, 44 * Double(count) / Double(maxDayCount))
+                    let height = count == 0 ? 4.0 : max(8, 38 * Double(count) / Double(maxDayCount))
                     RoundedRectangle(cornerRadius: 4)
                         .fill(count == 0 ? FN.line : FN.ink.opacity(0.15))
                         .frame(maxWidth: .infinity)
                         .frame(height: height)
                 }
             }
-            .frame(height: 44)
+            .frame(height: 38)
         }
-        .padding(20)
+        .padding(17)
         .background(FN.surface)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .clipShape(RoundedRectangle(cornerRadius: 17))
     }
 }

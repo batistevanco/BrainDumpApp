@@ -11,6 +11,9 @@ final class BrainDumpStore: ObservableObject {
     @AppStorage("reviewHour") var reviewHour = 20
     @AppStorage("reviewMinute") var reviewMinute = 0
     @AppStorage("isDictationEnabled") var isDictationEnabled = true
+    @AppStorage("stopDictationAfterSave") var stopDictationAfterSave = true
+    @AppStorage("textSizePreference") var textSizePreference = TextSizePreference.default.rawValue
+    @AppStorage("colorSchemePreference") var colorSchemePreference = ColorSchemePreference.system.rawValue
 
     nonisolated static let encoder: JSONEncoder = {
         let encoder = JSONEncoder()
@@ -67,6 +70,15 @@ final class BrainDumpStore: ObservableObject {
             let day = Calendar.current.date(byAdding: .day, value: -offset, to: Date()) ?? Date()
             return weekItems.filter { Calendar.current.isDate($0.createdAt, inSameDayAs: day) }.count
         }
+    }
+
+    var selectedTextSize: TextSizePreference {
+        get { TextSizePreference(rawValue: textSizePreference) ?? .default }
+        set { textSizePreference = newValue.rawValue }
+    }
+
+    var selectedColorScheme: ColorScheme? {
+        ColorSchemePreference(rawValue: colorSchemePreference)?.colorScheme
     }
 
     func addItem(_ text: String, type: FlowItemType? = nil) {

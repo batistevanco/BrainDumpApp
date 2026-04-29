@@ -33,7 +33,7 @@ struct WelcomeOnboardingPage: View {
                     .padding(.horizontal, 22)
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color.white)
+                    .background(FN.card)
                     .clipShape(RoundedRectangle(cornerRadius: 18))
                     .overlay(RoundedRectangle(cornerRadius: 18).stroke(FN.ink, lineWidth: 1.5))
                     .padding(.horizontal, 38)

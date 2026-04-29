@@ -10,15 +10,15 @@ struct ItemCard: View {
                     Image(systemName: type.icon)
                     Text(type.label)
                 }
-                .font(.system(size: 13, weight: .medium))
+                .appFont(size: 12, weight: .medium)
                 .foregroundStyle(type.color)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
+                .padding(.horizontal, 9)
+                .padding(.vertical, 4)
                 .background(type.color.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipShape(RoundedRectangle(cornerRadius: 7))
             }
             Text(item.text)
-                .font(.system(size: 23))
+                .appFont(size: 20)
                 .foregroundStyle(FN.ink)
                 .strikethrough(item.status == .completed)
                 .lineLimit(3)
@@ -33,13 +33,13 @@ struct ItemCard: View {
                 Text(item.status.label)
                     .foregroundStyle(item.status.color)
             }
-            .font(.system(size: 17))
+            .appFont(size: 15)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 20)
-        .padding(.vertical, 18)
+        .padding(.horizontal, 17)
+        .padding(.vertical, 15)
         .background(FN.surface)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
         .opacity(item.status == .completed ? 0.55 : 1)
     }
 }

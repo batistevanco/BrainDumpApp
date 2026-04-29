@@ -11,6 +11,7 @@ struct RootView: View {
                 OnboardingView()
             }
         }
-        .background(Color.white)
+        .background(FN.surface)
+        .environment(\.appTextScale, store.selectedTextSize.scale)
     }
 }

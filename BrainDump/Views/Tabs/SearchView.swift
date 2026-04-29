@@ -8,30 +8,28 @@ struct SearchView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Zoek")
-                .font(.system(size: 36, weight: .medium))
-                .foregroundStyle(FN.ink)
-                .padding(.horizontal, 24)
-                .padding(.top, 28)
             HStack(spacing: 10) {
                 Image(systemName: "magnifyingglass")
                     .foregroundStyle(FN.tertiary)
                 TextField("Zoek in je gedachten", text: $query)
                     .focused($focused)
-                    .font(.system(size: 20))
+                    .appFont(size: 18)
                     .textInputAutocapitalization(.never)
             }
             .padding(.horizontal, 18)
-            .frame(height: 62)
+            .frame(height: 56)
             .background(FN.surface)
-            .clipShape(RoundedRectangle(cornerRadius: 18))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
             .padding(.horizontal, 20)
-            .padding(.top, 22)
+            .padding(.top, 8)
 
             ScrollView {
                 LazyVStack(spacing: 10) {
                     ForEach(results) { item in
-                        Button { detailItem = item } label: {
+                        Button {
+                            focused = false
+                            detailItem = item
+                        } label: {
                             ItemCard(item: item)
                         }
                         .buttonStyle(.plain)
@@ -39,8 +37,15 @@ struct SearchView: View {
                 }
                 .padding(20)
             }
+            .scrollDismissesKeyboard(.interactively)
+            .simultaneousGesture(
+                DragGesture(minimumDistance: 12)
+                    .onChanged { _ in
+                        focused = false
+                    }
+            )
         }
-        .onAppear { focused = true }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .sheet(item: $detailItem) { item in
             ItemDetailView(item: item)
         }

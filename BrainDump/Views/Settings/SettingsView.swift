@@ -19,6 +19,7 @@ struct SettingsView: View {
                     VStack(alignment: .leading, spacing: 26) {
                         header
                         appCard
+                        appearanceCard
                         captureCard
                         reviewCard
                         backupCard
@@ -64,11 +65,11 @@ struct SettingsView: View {
                 dismiss()
             } label: {
                 Text("Klaar")
-                    .font(.system(size: 18, weight: .medium))
+                    .appFont(size: 16, weight: .medium)
                     .foregroundStyle(FN.ink)
                     .padding(.horizontal, 22)
-                    .padding(.vertical, 14)
-                    .background(Color.white)
+                    .padding(.vertical, 12)
+                    .background(FN.card)
                     .clipShape(Capsule())
                     .shadow(color: FN.ink.opacity(0.06), radius: 18, y: 8)
             }
@@ -77,7 +78,7 @@ struct SettingsView: View {
             Spacer()
 
             Text("Instellingen")
-                .font(.system(size: 20, weight: .semibold))
+                .appFont(size: 16, weight: .semibold)
                 .foregroundStyle(FN.ink)
 
             Spacer()
@@ -90,16 +91,19 @@ struct SettingsView: View {
     private var appCard: some View {
         VStack(alignment: .leading, spacing: 18) {
             HStack(alignment: .center, spacing: 16) {
-                MascotIcon(size: 76)
+                MascotIcon(size: 66)
 
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Brainox")
-                        .font(.system(size: 28, weight: .semibold))
+                        .appFont(size: 24, weight: .semibold)
                         .foregroundStyle(FN.ink)
                     Text("Hoofd leeg. Dag helder.")
-                        .font(.system(size: 17, weight: .medium))
+                        .appFont(size: 15, weight: .medium)
                         .foregroundStyle(FN.secondary)
                         .fixedSize(horizontal: false, vertical: true)
+                    Text("Versie \(appVersion) · Build \(buildNumber)")
+                        .appFont(size: 13, weight: .medium)
+                        .foregroundStyle(FN.tertiary)
                 }
             }
 
@@ -109,21 +113,98 @@ struct SettingsView: View {
                 SettingsStatPill(value: "\(store.items.count)", label: "totaal")
             }
         }
-        .padding(22)
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 28))
+        .padding(19)
+        .background(FN.card)
+        .clipShape(RoundedRectangle(cornerRadius: 24))
         .shadow(color: FN.ink.opacity(0.05), radius: 22, y: 12)
+    }
+
+    private var appearanceCard: some View {
+        SettingsGroup(title: "Weergave") {
+            VStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack(spacing: 14) {
+                        SettingsIcon(name: "textformat.size")
+
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("Tekstgrootte")
+                                .appFont(size: 16, weight: .semibold)
+                                .foregroundStyle(FN.ink)
+                            Text("Pas tekst en knoppen in de app aan")
+                                .appFont(size: 13, weight: .medium)
+                                .foregroundStyle(FN.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+
+                        Spacer()
+                    }
+
+                    Picker("Tekstgrootte", selection: textSizeBinding) {
+                        ForEach(TextSizePreference.allCases) { option in
+                            Text(option.label).tag(option)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+                .padding(16)
+
+                Divider()
+                    .padding(.leading, 16)
+
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack(spacing: 14) {
+                        SettingsIcon(name: "circle.lefthalf.filled")
+
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("Weergavemodus")
+                                .appFont(size: 16, weight: .semibold)
+                                .foregroundStyle(FN.ink)
+                            Text("Kies licht, donker of volg het systeem")
+                                .appFont(size: 13, weight: .medium)
+                                .foregroundStyle(FN.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+
+                        Spacer()
+                    }
+
+                    Picker("Weergavemodus", selection: colorSchemeBinding) {
+                        ForEach(ColorSchemePreference.allCases) { option in
+                            Text(option.label).tag(option)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+                .padding(16)
+            }
+            .background(FN.card)
+            .clipShape(RoundedRectangle(cornerRadius: 24))
+        }
     }
 
     private var captureCard: some View {
         SettingsGroup(title: "Capture") {
-            SettingsToggleRow(
-                icon: "mic.fill",
-                title: "Dicteren",
-                subtitle: "Toon de microfoonknop op het capture-scherm",
-                isOn: $store.isDictationEnabled
-            )
-            .background(Color.white)
+            VStack(spacing: 0) {
+                SettingsToggleRow(
+                    icon: "mic.fill",
+                    title: "Dicteren",
+                    subtitle: "Toon de microfoonknop op het capture-scherm",
+                    isOn: $store.isDictationEnabled
+                )
+
+                Divider()
+                    .padding(.leading, 70)
+
+                SettingsToggleRow(
+                    icon: "stop.circle.fill",
+                    title: "Stop na verzenden",
+                    subtitle: "Zet dictatie automatisch uit zodra je een item opslaat",
+                    isOn: $store.stopDictationAfterSave
+                )
+                .disabled(!store.isDictationEnabled)
+                .opacity(store.isDictationEnabled ? 1 : 0.45)
+            }
+            .background(FN.card)
             .clipShape(RoundedRectangle(cornerRadius: 28))
         }
     }
@@ -136,10 +217,10 @@ struct SettingsView: View {
 
                     VStack(alignment: .leading, spacing: 3) {
                         Text("Reviewmoment")
-                            .font(.system(size: 19, weight: .semibold))
+                            .appFont(size: 17, weight: .semibold)
                             .foregroundStyle(FN.ink)
                         Text("Elke dag om \(reviewTimeText)")
-                            .font(.system(size: 14, weight: .medium))
+                            .appFont(size: 13, weight: .medium)
                             .foregroundStyle(FN.secondary)
                     }
 
@@ -164,7 +245,7 @@ struct SettingsView: View {
                     }
                 }
             }
-            .background(Color.white)
+            .background(FN.card)
             .clipShape(RoundedRectangle(cornerRadius: 28))
         }
     }
@@ -183,7 +264,7 @@ struct SettingsView: View {
                     importing = true
                 }
             }
-            .background(Color.white)
+            .background(FN.card)
             .clipShape(RoundedRectangle(cornerRadius: 28))
         }
     }
@@ -199,21 +280,21 @@ struct SettingsView: View {
 
                     VStack(alignment: .leading, spacing: 3) {
                         Text("Toon onboarding opnieuw")
-                            .font(.system(size: 18, weight: .semibold))
+                            .appFont(size: 16, weight: .semibold)
                             .foregroundStyle(FN.ink)
                         Text("Bekijk de eerste uitlegschermen nog eens")
-                            .font(.system(size: 14, weight: .medium))
+                            .appFont(size: 13, weight: .medium)
                             .foregroundStyle(FN.secondary)
                     }
 
                     Spacer()
 
                     Image(systemName: "chevron.right")
-                        .font(.system(size: 15, weight: .bold))
+                        .appFont(size: 14, weight: .bold)
                         .foregroundStyle(FN.tertiary)
                 }
                 .padding(18)
-                .background(Color.white)
+                .background(FN.card)
                 .clipShape(RoundedRectangle(cornerRadius: 28))
             }
             .buttonStyle(.plain)
@@ -228,15 +309,15 @@ struct SettingsView: View {
                         SettingsIcon(name: "envelope.fill")
                         VStack(alignment: .leading, spacing: 3) {
                             Text("Probleem melden")
-                                .font(.system(size: 18, weight: .semibold))
+                                .appFont(size: 18, weight: .semibold)
                                 .foregroundStyle(FN.ink)
                             Text("support@vancoilliestudio.be")
-                                .font(.system(size: 14, weight: .medium))
+                            .appFont(size: 13, weight: .medium)
                                 .foregroundStyle(FN.secondary)
                         }
                         Spacer()
                         Image(systemName: "arrow.up.right")
-                            .font(.system(size: 15, weight: .bold))
+                            .appFont(size: 14, weight: .bold)
                             .foregroundStyle(FN.tertiary)
                     }
                     .padding(18)
@@ -250,28 +331,52 @@ struct SettingsView: View {
                         SettingsIcon(name: "hand.raised.fill")
                         VStack(alignment: .leading, spacing: 3) {
                             Text("Privacybeleid")
-                                .font(.system(size: 18, weight: .semibold))
+                                .appFont(size: 16, weight: .semibold)
                                 .foregroundStyle(FN.ink)
                             Text("Bekijk hoe Brainox omgaat met je gegevens")
-                                .font(.system(size: 14, weight: .medium))
+                                .appFont(size: 13, weight: .medium)
                                 .foregroundStyle(FN.secondary)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                         Spacer()
                         Image(systemName: "arrow.up.right")
-                            .font(.system(size: 15, weight: .bold))
+                            .appFont(size: 14, weight: .bold)
                             .foregroundStyle(FN.tertiary)
                     }
                     .padding(18)
                 }
             }
-            .background(Color.white)
+            .background(FN.card)
             .clipShape(RoundedRectangle(cornerRadius: 28))
         }
     }
 
     private var reviewTimeText: String {
         String(format: "%02d:%02d", store.reviewHour, store.reviewMinute)
+    }
+
+    private var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "-"
+    }
+
+    private var buildNumber: String {
+        Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "-"
+    }
+
+    private var textSizeBinding: Binding<TextSizePreference> {
+        Binding {
+            store.selectedTextSize
+        } set: { newValue in
+            store.selectedTextSize = newValue
+        }
+    }
+
+    private var colorSchemeBinding: Binding<ColorSchemePreference> {
+        Binding {
+            ColorSchemePreference(rawValue: store.colorSchemePreference) ?? .system
+        } set: { newValue in
+            store.colorSchemePreference = newValue.rawValue
+        }
     }
 
     private var reviewBinding: Binding<Date> {
@@ -296,7 +401,7 @@ private struct SettingsGroup<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title)
-                .font(.system(size: 21, weight: .semibold))
+                .appFont(size: 18, weight: .semibold)
                 .foregroundStyle(FN.tertiary)
                 .padding(.leading, 22)
 
@@ -313,16 +418,16 @@ private struct SettingsStatPill: View {
     var body: some View {
         VStack(spacing: 2) {
             Text(value)
-                .font(.system(size: 20, weight: .semibold))
+                .appFont(size: 18, weight: .semibold)
                 .foregroundStyle(FN.ink)
             Text(label)
-                .font(.system(size: 12, weight: .semibold))
+                .appFont(size: 11, weight: .semibold)
                 .foregroundStyle(FN.secondary)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 12)
+        .padding(.vertical, 10)
         .background(FN.surface)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }
 
@@ -339,10 +444,10 @@ private struct SettingsActionRow: View {
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text(title)
-                        .font(.system(size: 18, weight: .semibold))
+                        .appFont(size: 16, weight: .semibold)
                         .foregroundStyle(FN.ink)
                     Text(subtitle)
-                        .font(.system(size: 14, weight: .medium))
+                        .appFont(size: 13, weight: .medium)
                         .foregroundStyle(FN.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -350,10 +455,10 @@ private struct SettingsActionRow: View {
                 Spacer()
 
                 Image(systemName: "chevron.right")
-                    .font(.system(size: 15, weight: .bold))
+                    .appFont(size: 14, weight: .bold)
                     .foregroundStyle(FN.tertiary)
             }
-            .padding(18)
+            .padding(16)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -372,10 +477,10 @@ private struct SettingsToggleRow: View {
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
-                    .font(.system(size: 18, weight: .semibold))
+                    .appFont(size: 16, weight: .semibold)
                     .foregroundStyle(FN.ink)
                 Text(subtitle)
-                    .font(.system(size: 14, weight: .medium))
+                    .appFont(size: 13, weight: .medium)
                     .foregroundStyle(FN.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -386,7 +491,7 @@ private struct SettingsToggleRow: View {
                 .labelsHidden()
                 .tint(FN.ink)
         }
-        .padding(18)
+        .padding(16)
     }
 }
 
@@ -395,10 +500,10 @@ private struct SettingsIcon: View {
 
     var body: some View {
         Image(systemName: name)
-            .font(.system(size: 18, weight: .semibold))
+            .appFont(size: 16, weight: .semibold)
             .foregroundStyle(FN.ink)
-            .frame(width: 38, height: 38)
+            .frame(width: 34, height: 34)
             .background(FN.surface)
-            .clipShape(RoundedRectangle(cornerRadius: 13))
+            .clipShape(RoundedRectangle(cornerRadius: 11))
     }
 }

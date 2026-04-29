@@ -9,11 +9,11 @@ struct SmallPill: View {
 
     var body: some View {
         Text(title)
-            .font(.system(size: 16))
+            .appFont(size: 14)
             .foregroundStyle(FN.secondary)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
+            .padding(.horizontal, 13)
+            .padding(.vertical, 8)
             .background(FN.surface)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipShape(RoundedRectangle(cornerRadius: 9))
     }
 }

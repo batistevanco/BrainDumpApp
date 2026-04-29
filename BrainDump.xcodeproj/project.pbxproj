@@ -46,6 +46,7 @@
 		A00000000000000000000021 /* MascotIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000021 /* MascotIcon.swift */; };
 		A00000000000000000000022 /* BrainDumpMascot.png in Resources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000022 /* BrainDumpMascot.png */; };
 		A00000000000000000000023 /* WeeklyStatsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000000000000000000023 /* WeeklyStatsCard.swift */; };
+		A00000000000000000000024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222222222222222222222225 /* Assets.xcassets */; };
 		T00000000000000000000001 /* BrainDumpStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000000000000000000001 /* BrainDumpStoreTests.swift */; };
 		T00000000000000000000002 /* BrainDumpBackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000000000000000000002 /* BrainDumpBackupTests.swift */; };
 /* End PBXBuildFile section */
@@ -404,7 +405,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					555555555555555555555551 = {
 						CreatedOnToolsVersion = 15.3;
@@ -444,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A00000000000000000000022 /* BrainDumpMascot.png in Resources */,
+				A00000000000000000000024 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,7 +547,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = K2F5H4NJCX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrainDumpWidget/Info.plist;
@@ -583,7 +585,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = K2F5H4NJCX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrainDumpWidget/Info.plist;
@@ -617,6 +619,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -669,6 +672,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -678,6 +682,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -723,6 +728,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -732,8 +738,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = K2F5H4NJCX;
 				ENABLE_PREVIEWS = YES;
@@ -766,8 +773,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = K2F5H4NJCX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;

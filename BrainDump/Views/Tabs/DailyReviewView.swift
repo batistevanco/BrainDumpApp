@@ -6,20 +6,17 @@ struct DailyReviewView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Daily Review")
-                    .font(.system(size: 21, weight: .medium))
-                    .foregroundStyle(FN.ink)
                 Text("Wat doe je met\nvandaag?")
-                    .font(.system(size: 40, weight: .medium))
+                    .font(.system(size: 35, weight: .medium))
                     .lineSpacing(3)
                     .foregroundStyle(FN.ink)
                 Text("\(total) items om te verwerken")
-                    .font(.system(size: 24))
+                    .font(.system(size: 21))
                     .foregroundStyle(FN.secondary)
                     .padding(.top, 8)
             }
             .padding(.horizontal, 24)
-            .padding(.top, 28)
+            .padding(.top, 8)
 
             VStack(alignment: .leading, spacing: 10) {
                 GeometryReader { proxy in
@@ -30,7 +27,7 @@ struct DailyReviewView: View {
                 }
                 .frame(height: 8)
                 Text("\(processed) van \(max(total, 1)) verwerkt")
-                    .font(.system(size: 20, weight: .medium))
+                    .font(.system(size: 18, weight: .medium))
                     .foregroundStyle(FN.secondary)
             }
             .padding(.horizontal, 24)
@@ -98,7 +95,7 @@ struct DailyReviewView: View {
                     }
                 }
                 .padding(.horizontal, 20)
-                .padding(.top, 28)
+                .padding(.top, 24)
                 .padding(.bottom, 20)
             }
         }

@@ -8,12 +8,12 @@ struct PrimaryButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.system(size: 24, weight: .medium))
-                .foregroundStyle(Color.white)
+                .appFont(size: 21, weight: .medium)
+                .foregroundStyle(disabled ? FN.secondary : FN.surface)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 21)
-                .background(disabled ? FN.ink.opacity(0.35) : FN.ink)
-                .clipShape(RoundedRectangle(cornerRadius: 22))
+                .padding(.vertical, 17)
+                .background(disabled ? FN.line : FN.ink)
+                .clipShape(RoundedRectangle(cornerRadius: 19))
         }
         .disabled(disabled)
         .buttonStyle(.plain)

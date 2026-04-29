@@ -7,15 +7,15 @@ struct EmptyState: View {
     var body: some View {
         VStack(spacing: 8) {
             Text(title)
-                .font(.system(size: 24, weight: .medium))
+                .appFont(size: 21, weight: .medium)
                 .foregroundStyle(FN.ink)
             Text(text)
-                .font(.system(size: 18))
+                .appFont(size: 16)
                 .foregroundStyle(FN.secondary)
         }
         .frame(maxWidth: .infinity)
-        .padding(28)
+        .padding(24)
         .background(FN.surface)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .clipShape(RoundedRectangle(cornerRadius: 17))
     }
 }

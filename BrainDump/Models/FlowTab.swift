@@ -12,4 +12,13 @@ enum FlowTab: String, CaseIterable {
         case .search: "magnifyingglass"
         }
     }
+
+    var navigationTitle: String {
+        switch self {
+        case .capture: "Wat zit er in je hoofd?"
+        case .list: "Lijst"
+        case .review: "Daily Review"
+        case .search: "Zoek"
+        }
+    }
 }

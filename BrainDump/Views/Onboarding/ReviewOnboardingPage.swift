@@ -15,7 +15,7 @@ struct ReviewOnboardingPage: View {
                     Text("Mail Pieter beantwoorden").font(.system(size: 22, weight: .medium))
                 }
                 .padding(18)
-                .background(Color.white)
+                .background(FN.card)
                 .clipShape(RoundedRectangle(cornerRadius: 18))
                 .overlay(RoundedRectangle(cornerRadius: 18).stroke(FN.ink, lineWidth: 2))
                 HStack(spacing: 8) {

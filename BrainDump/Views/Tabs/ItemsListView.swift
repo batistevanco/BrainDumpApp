@@ -8,17 +8,12 @@ struct ItemsListView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Lijst")
-                    .font(.system(size: 36, weight: .medium))
-                    .foregroundStyle(FN.ink)
-                Text("\(store.weekCount) items deze week")
-                    .font(.system(size: 22))
-                    .foregroundStyle(FN.secondary)
-            }
-            .padding(.horizontal, 24)
-            .padding(.top, 26)
-            .padding(.bottom, 16)
+            Text("\(store.weekCount) items deze week")
+                .font(.system(size: 17))
+                .foregroundStyle(FN.secondary)
+                .padding(.horizontal, 24)
+                .padding(.top, 8)
+                .padding(.bottom, 12)
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {

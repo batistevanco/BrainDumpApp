@@ -15,12 +15,12 @@ struct ReviewActionButton: View {
                 }
                 Text(title)
             }
-            .font(.system(size: 18, weight: .medium))
+            .appFont(size: 16, weight: .medium)
             .foregroundStyle(labelColor)
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
+            .padding(.vertical, 13)
             .background(backgroundColor)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .buttonStyle(.plain)
     }

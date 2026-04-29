@@ -9,7 +9,7 @@ struct SectionLabel: View {
 
     var body: some View {
         Text(title.uppercased())
-            .font(.system(size: 17, weight: .medium))
+            .appFont(size: 15, weight: .medium)
             .foregroundStyle(FN.tertiary)
             .tracking(0.5)
             .frame(maxWidth: .infinity, alignment: .leading)

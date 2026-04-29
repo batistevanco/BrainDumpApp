@@ -9,6 +9,27 @@ struct CaptureView: View {
     @State private var savedPulse = false
     @FocusState private var isFocused: Bool
 
+    private var canSave: Bool {
+        !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    private func save() {
+        guard canSave else { return }
+        isFocused = false
+        if store.stopDictationAfterSave { speech.stop() }
+        store.addItem(text, type: selectedType)
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        withAnimation(.easeInOut(duration: 0.2)) {
+            text = ""
+            selectedType = nil
+            savedPulse = true
+        }
+        Task {
+            try? await Task.sleep(for: .seconds(1.1))
+            await MainActor.run { savedPulse = false }
+        }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(Date().formatted(.dateTime.weekday(.wide).day().month(.wide).locale(Locale(identifier: "nl_BE"))).capitalized)
@@ -78,22 +99,8 @@ struct CaptureView: View {
                 Spacer()
             }
 
-            PrimaryButton(title: savedPulse ? "Opgeslagen" : "Opslaan", disabled: text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
-                isFocused = false
-                if store.stopDictationAfterSave {
-                    speech.stop()
-                }
-                store.addItem(text, type: selectedType)
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    text = ""
-                    selectedType = nil
-                    savedPulse = true
-                }
-                Task {
-                    try? await Task.sleep(for: .seconds(1.1))
-                    await MainActor.run { savedPulse = false }
-                }
+            PrimaryButton(title: savedPulse ? "Opgeslagen" : "Opslaan", disabled: !canSave) {
+                save()
             }
 
             if store.isDictationEnabled {
@@ -126,6 +133,18 @@ struct CaptureView: View {
                 .onChanged { _ in isFocused = false }
         )
         .ignoresSafeArea(.keyboard, edges: .bottom)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button {
+                    save()
+                } label: {
+                    Text(savedPulse ? "Opgeslagen" : "Opslaan")
+                        .fontWeight(.semibold)
+                }
+                .disabled(!canSave)
+            }
+        }
         .onChange(of: speech.transcript) { _, newValue in
             guard !newValue.isEmpty else { return }
             text = newValue

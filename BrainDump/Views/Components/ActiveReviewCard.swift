@@ -38,7 +38,7 @@ struct ActiveReviewCard: View {
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     withAnimation(.spring(response: 0.38, dampingFraction: 0.82)) { store.setStatus(item, status: .saved) }
                 }
-                ReviewActionButton(title: "Weg", destructive: true) {
+                ReviewActionButton(title: "Verwijder", destructive: true) {
                     UINotificationFeedbackGenerator().notificationOccurred(.warning)
                     withAnimation(.spring(response: 0.38, dampingFraction: 0.82)) { store.delete(item) }
                 }

@@ -31,7 +31,7 @@ final class BrainDumpStore: ObservableObject {
     private let storageURL: URL
     private let shouldSeedSampleData: Bool
 
-    init(storageURL: URL? = nil, seedSampleData: Bool = true) {
+    init(storageURL: URL? = nil, seedSampleData: Bool = false) {
         self.storageURL = storageURL ?? FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("braindump-items.json")
